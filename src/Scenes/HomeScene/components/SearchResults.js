@@ -11,7 +11,7 @@ function SearchResults({isSearching}) {
     dispatch(getSearchedMovieAction());
   }, [dispatch]);
 
-  if (movies === null) {
+  if (movies === null || !movies.length) {
     return null;
   }
 
