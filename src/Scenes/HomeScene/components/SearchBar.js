@@ -17,17 +17,20 @@ function SearchBar({setIsSearching = () => {}}) {
   useEffect(() => {
     const searchHN = () => {
       setIsSearching(true);
+      if (searchString === '') {
+        dispatch({
+          type: SEARCHED_MOVIES,
+          payload: null,
+        });
+        return;
+      }
       if (debouncedSearchTerm !== '') {
         dispatch(getSearchedMovieAction(debouncedSearchTerm));
       }
       setIsSearching(false);
     };
-    dispatch({
-      type: SEARCHED_MOVIES,
-      payload: null,
-    });
     searchHN();
-  }, [debouncedSearchTerm, dispatch, setIsSearching]);
+  }, [debouncedSearchTerm, dispatch, searchString, setIsSearching]);
 
   return (
     <View style={styles.wrapper}>

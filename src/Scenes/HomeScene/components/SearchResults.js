@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {getSearchedMovieAction} from '../../../store/actions';
 import MovieScroll from '../../../Components/MovieScroll';
 
-function SearchResults() {
+function SearchResults({isSearching}) {
   const movies = useSelector(movies => movies.searchedResults);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -19,7 +19,7 @@ function SearchResults() {
     <View style={styles.wrapper}>
       <Text style={styles.sectionTitle}>Search Results</Text>
       <View style={styles.listWrapper}>
-        <MovieScroll movies={movies} />
+        <MovieScroll movies={movies} isSearching={isSearching} />
       </View>
     </View>
   );

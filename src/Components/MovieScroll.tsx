@@ -11,6 +11,7 @@ interface MovieScrollProps {
       overview: string;
     },
   ];
+  isSearching: boolean;
 }
 
 interface RenderProps {
@@ -41,8 +42,8 @@ const renderCard = ({item, index}: RenderProps) => {
   );
 };
 
-function MovieScroll({movies}: MovieScrollProps) {
-  if (!movies.length) {
+function MovieScroll({movies, isSearching}: MovieScrollProps) {
+  if (!movies?.length && !isSearching) {
     return (
       <View>
         <Text style={styles.noRes}>No Results Found.</Text>

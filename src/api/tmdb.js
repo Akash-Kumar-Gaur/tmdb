@@ -1,5 +1,3 @@
-import {RATED_MOVIES_MOCK, SEARCHED_MOVIES_MOCK, UPCOMING_MOVIES_MOCK} from './mockResponse';
-
 const options = {
   method: 'GET',
   headers: {
@@ -10,44 +8,41 @@ const options = {
 };
 
 export const getRatedMovies = () => {
-  // return fetch(
-  //   'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1',
-  //   options,
-  // )
-  //   .then(response => response.json())
-  //   .then(json => {
-  //     return json;
-  //   })
-  //   .catch(err => console.error(err));
-  return Promise.resolve(RATED_MOVIES_MOCK);
+  return fetch(
+    'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1',
+    options,
+  )
+    .then(response => response.json())
+    .then(json => {
+      return json;
+    })
+    .catch(err => console.error(err));
 };
 
 export const getUpcomingMovies = () => {
-  // return fetch(
-  //   'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1',
-  //   options,
-  // )
-  //   .then(response => response.json())
-  //   .then(json => {
-  //     return json;
-  //   })
-  //   .catch(error => {
-  //     console.error(error);
-  //   });
-  return Promise.resolve(UPCOMING_MOVIES_MOCK);
+  return fetch(
+    'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1',
+    options,
+  )
+    .then(response => response.json())
+    .then(json => {
+      return json;
+    })
+    .catch(error => {
+      console.error(error);
+    });
 };
 
 export const getSearchResult = (searchText = '') => {
-  // return fetch(
-  //   `https://api.themoviedb.org/3/search/movie?query=${searchText}&include_adult=false&language=en-US&page=1`,
-  //   options,
-  // )
-  //   .then(response => response.json())
-  //   .then(json => {
-  //     return json;
-  //   })
-  //   .catch(error => {
-  //     console.error(error);
-  //   });
-  return Promise.resolve(SEARCHED_MOVIES_MOCK);
+  return fetch(
+    `https://api.themoviedb.org/3/search/movie?query=${searchText}&include_adult=false&language=en-US&page=1`,
+    options,
+  )
+    .then(response => response.json())
+    .then(json => {
+      return json;
+    })
+    .catch(error => {
+      console.error(error);
+    });
 };
